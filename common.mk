@@ -130,8 +130,8 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 # Bluetooth
-PRODUCT_PACKAGES += \
-    libbt-vendor
+#PRODUCT_PACKAGES += \
+#    libbt-vendor
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -155,7 +155,8 @@ PRODUCT_PACKAGES += \
 
 # QCOM OSS
 PRODUCT_PACKAGES += \
-    librmnetctl
+    librmnetctl \
+    rmnetctl 
 
 # QCOM GPS
 PRODUCT_PACKAGES += \
@@ -166,11 +167,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# AOSP Packages
-PRODUCT_PACKAGES += \
-    Launcher3 \
-    WallpaperPicker
-
+# TODO probably should remove these? 
 PRODUCT_PACKAGES += \
     libjson \
     libion \
@@ -326,6 +323,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.kpi.debug=0 \
     persist.camera.global.debug=0
 
+# Camera HAL1 support
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
+
 # Disable Dual Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.dual.camera.mpo=0 \
@@ -349,7 +351,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # sdcardFS
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=true
+    ro.sys.sdcardfs=false
 
 ifneq ($(filter loire tone yoshino,$(SOMC_PLATFORM)),)
 # RILD
@@ -361,5 +363,18 @@ endif
 # Vendor version
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.version=$(TARGET_VENDOR_VERSION)
+
+#aethercastctl
+PRODUCT_PROPERTY_OVERRIDES += \
+    ubuntu.widi.supported=1
+
+# Multimedia playback support
+PRODUCT_PACKAGES += \
+    libmedia_compat_layer \
+    libubuntu_application_api \
+    libdroidmedia \
+    libui_compat_layer \
+    libsf_compat_layer
+
 
 PRODUCT_CUSTOM_IMAGE_MAKEFILES := $(COMMON_PATH)/odm.mk
