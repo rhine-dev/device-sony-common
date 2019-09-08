@@ -156,7 +156,7 @@ PRODUCT_PACKAGES += \
 # QCOM OSS
 PRODUCT_PACKAGES += \
     librmnetctl \
-    rmnetctl 
+    rmnetcli
 
 # QCOM GPS
 PRODUCT_PACKAGES += \
@@ -375,6 +375,5 @@ PRODUCT_PACKAGES += \
     libdroidmedia \
     libui_compat_layer \
     libsf_compat_layer
-
 
 PRODUCT_CUSTOM_IMAGE_MAKEFILES := $(COMMON_PATH)/odm.mk
