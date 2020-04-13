@@ -368,6 +368,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1
 
+# Ubuntu common overlay
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/ubuntu/ofono.override:system/ubuntu/etc/init/ofono.override
+
 # Multimedia playback support
 PRODUCT_PACKAGES += \
     libmedia_compat_layer \
